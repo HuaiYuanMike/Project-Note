@@ -29,3 +29,12 @@
   <br/>[James' article on the above two items](https://proandroiddev.com/understanding-rxjava-subscribeon-and-observeon-744b0c6a41ea)
 
 ### Unit Test
+* JUnit and Mockito General
+
+* Test with LiveData and ViewModel architecture component.
+
+* Set up @Rule for thread related testing.
+
+* Issue - Mocked object still executing the actual method.
+  - Kotlin [all fields are final](https://github.com/mockito/mockito/issues/1053), need to have all the fields open.
+  - Or [set up `mock-maker-inline` in file](https://blog.mindorks.com/mockito-cannot-mock-in-kotlin)
