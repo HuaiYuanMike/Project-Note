@@ -1,4 +1,5 @@
 ## MVI Architecture POC Note
+
 ###Online references on MVI
 
 [The Contract of Model-View-Intent Architecture](https://proandroiddev.com/the-contract-of-the-model-view-intent-architecture-777f95706c1e)
@@ -11,7 +12,10 @@
 
 [MVI architecture on Android - Getting Started](https://www.raywenderlich.com/817602-mvi-architecture-for-android-tutorial-getting-started)
 
+[MVI a Reactive Architecture Pattern](https://medium.com/mindorks/mvi-a-reactive-architecture-pattern-45c6f5096ab7)
+
 ### RXJava2
+
 * RxJava operators in general:
   - The **order** matters in the operators of RxJava (or ReactiveX). Each operator works on the result of the previous operator. 
   The comparison case would be the builder pattern, which the order of each methods doesn't matter and the methods work on the object independently.
@@ -29,6 +33,7 @@
   <br/>[James' article on the above two items](https://proandroiddev.com/understanding-rxjava-subscribeon-and-observeon-744b0c6a41ea)
 
 ### Unit Test
+
 * JUnit and Mockito General
 
 * Test with LiveData and ViewModel architecture component.
@@ -38,3 +43,10 @@
 * Issue - Mocked object still executing the actual method.
   - Kotlin [all fields are final](https://github.com/mockito/mockito/issues/1053), need to have all the fields open.
   - Or [set up `mock-maker-inline` in file](https://blog.mindorks.com/mockito-cannot-mock-in-kotlin)
+  
+  
+ ### Android Architecture Component LiveData
+ 
+* Don't expose the LiveData to outter layer
+  - In the scenario of keeping the states as a `LiveData` within the `ViewModel`, we should only expose the `LiveData` as a `ImmutableLiveData` to the outer layer observer.
+ <br/>[Don't expose LiveData](https://gist.github.com/humblehacker/0eb6458b1df6cf3049e031f36f0615f5)
