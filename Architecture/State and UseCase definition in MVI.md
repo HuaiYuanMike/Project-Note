@@ -41,5 +41,7 @@ For example in the below:
 What do we want our repository methods to return? 
 (1) A `Change` which contains states?
 (2) Just the data from the data source?
+Does the choice of asynchronous implementation affects the decision making here?
+For example, the choice between using Kotlin Coroutine or RxJAva/RxKotlin.
 ```java
 ```
