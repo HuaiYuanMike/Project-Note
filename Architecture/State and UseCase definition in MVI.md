@@ -27,8 +27,18 @@ void requestSection(Observable<Section> sectionObservable) {
         });
     }
 ```
+- We wrap it in a data class which represents the data needed for the screen rendering (e.g. something like `ScreenData`).
+- For the actual ***state*** like "isIdle", "isLoading", ...etc. we put it as the fields of the `State` class.
+- Therefore, a `State` class will be something like below:
 
-2. *** How do we deal with the inherited methods in the parent fragment class ***
+``` Kotlin
+        data class State(val screenData: ScreenData,
+                        val isLoading: Boolean,
+                        val isIdle: Boolean
+                        val error: Throwable)
+```
+
+2. ***How do we deal with the inherited methods in the parent fragment class***
 For the methods which is shared between multiple childs of the parent class and is invoked within the parent class's lifecycle callbacks.
 Do we
 (1) Have a `ViewModel` connets to the parent UI component (Fragment or Activity) and triggers the action. Just like we have before the MVI.
@@ -37,7 +47,7 @@ For example in the below:
 ```java
 ```
 
-3. *** Does the repository have the states?***
+3. ***Does the repository have the states?***
 What do we want our repository methods to return? 
 (1) A `Change` which contains states?
 (2) Just the data from the data source?
