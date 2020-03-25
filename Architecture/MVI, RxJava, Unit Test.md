@@ -1,6 +1,4 @@
-## MVI Architecture POC Note
-
-###Online references on MVI
+### Online references on MVI
 
 [The Contract of Model-View-Intent Architecture](https://proandroiddev.com/the-contract-of-the-model-view-intent-architecture-777f95706c1e)
 
@@ -14,7 +12,7 @@
 
 [MVI a Reactive Architecture Pattern](https://medium.com/mindorks/mvi-a-reactive-architecture-pattern-45c6f5096ab7)
 
-### RXJava2
+### RXJava2 Tips
 
 * RxJava operators in general:
   - The **order** matters in the operators of RxJava (or ReactiveX). Each operator works on the result of the previous operator. 
@@ -32,13 +30,19 @@
 * RxJava schedulers:
   <br/>[James' article on the above two items](https://proandroiddev.com/understanding-rxjava-subscribeon-and-observeon-744b0c6a41ea)
 
-### Unit Test
+### Unit Testing (with RxJava)
 
 * JUnit and Mockito General
 
 * Test with LiveData and ViewModel architecture component.
 
-* Set up @Rule for thread related testing.
+* @Rule to annotate a `TestRule` object which is very similar to @Before annotation, but is convenient to share between test classes.
+
+* Threading and asynchronous testing 
+- The same thread -> Test synchronously with `TestSubscriber`.
+- Different Thread -> Test with overriding the RxJava thread handling with the help of `RxJavaPlugins` and `RxAndroidPlugins` within the TestRule. RxJava (1) does it by the RxJavaSchedulerHook and RxAndroidScheduler hook.
+
+[Reference](https://fedepaol.github.io/blog/2015/09/13/testing-rxjava-observables-subscriptions/)
 
 * Issue - Mocked object still executing the actual method.
   - Kotlin [all fields are final](https://github.com/mockito/mockito/issues/1053), need to have all the fields open.
